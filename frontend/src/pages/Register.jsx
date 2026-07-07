@@ -52,7 +52,7 @@ export default function Register() {
                   },
                 })}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary"
-                placeholder="john_doe"
+                placeholder="Dream_Writer"
               />
               {errors.username && <p className="text-red-500 text-sm mt-1">{errors.username.message}</p>}
             </div>
@@ -80,7 +80,7 @@ export default function Register() {
                 type="text"
                 {...register('fullName')}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary"
-                placeholder="John Doe"
+                placeholder="Full Name "
               />
             </div>
 
