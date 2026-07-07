@@ -116,3 +116,57 @@ class CommentResponse(CommentBase):
     
     class Config:
         from_attributes = True
+
+
+class PostBase(BaseModel):
+    """Base post schema"""
+    title: str = Field(..., min_length=1, max_length=200)
+    content: str = Field(..., min_length=1)
+    excerpt: Optional[str] = None
+    category_id: Optional[int] = None
+
+
+class PostCreate(PostBase):
+    """Post creation schema"""
+    status: PostStatusEnum = PostStatusEnum.DRAFT
+
+
+class PostUpdate(BaseModel):
+    """Post update schema"""
+    title: Optional[str] = Field(None, min_length=1, max_length=200)
+    content: Optional[str] = None
+    excerpt: Optional[str] = None
+    status: Optional[PostStatusEnum] = None
+    category_id: Optional[int] = None
+
+
+class PostResponse(PostBase):
+    """Post response schema"""
+    id: int
+    slug: str
+    status: PostStatusEnum
+    author_id: int
+    author: UserResponse
+    category: Optional[CategoryResponse]
+    created_at: datetime
+    updated_at: datetime
+    published_at: Optional[datetime]
+    
+    class Config:
+        from_attributes = True
+
+
+class PostDetailResponse(PostResponse):
+    """Detailed post response with comments"""
+    comments: List[CommentResponse] = []
+    likes_count: int = 0
+    is_liked: bool = False
+
+
+class PostListResponse(BaseModel):
+    """Post list response with pagination"""
+    items: List[PostResponse]
+    total: int
+    page: int
+    page_size: int
+    total_pages: int
