@@ -170,3 +170,27 @@ class PostListResponse(BaseModel):
     page: int
     page_size: int
     total_pages: int
+    
+    
+class DashboardStats(BaseModel):
+    """Dashboard statistics schema"""
+    total_users: int
+    total_posts: int
+    total_comments: int
+    total_categories: int
+    published_posts: int
+    draft_posts: int
+
+
+class RecentActivity(BaseModel):
+    """Recent activity schema"""
+    id: int
+    activity_type: str  # "post_created", "comment_added", "user_registered"
+    description: str
+    created_at: datetime
+
+
+class DashboardResponse(BaseModel):
+    """Dashboard response schema"""
+    stats: DashboardStats
+    recent_activities: List[RecentActivity]
