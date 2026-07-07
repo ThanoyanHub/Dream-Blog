@@ -19,7 +19,7 @@ if not admin:
     admin = User(
         username="admin",
         email=admin_email,
-        password_hash=hash_password("adminpassword123"),
+        password_hash=hash_password("admin123"),
         role=RoleEnum.ADMIN,
         is_active=True
     )

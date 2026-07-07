@@ -36,3 +36,32 @@ npm run dev
 ```
 
 Frontend will be available at `http://localhost:5173`
+
+## For Seeding 
+
+```
+# On Mac/Linux
+source venv/bin/activate
+
+# On Windows (Command Prompt)
+venv\Scripts\activate
+
+# On Windows (PowerShell)
+.\venv\Scripts\activate
+
+```
+
+```
+# On Mac/Linux
+export PYTHONPATH=$PYTHONPATH:.
+python app/database/Seed_db.py  
+
+# On Windows (PowerShell)
+$env:PYTHONPATH="."
+python app/database/Seed_db.py
+
+# On Windows (Command Prompt)
+set PYTHONPATH=.
+python app/database/Seed_db.py
+
+```
