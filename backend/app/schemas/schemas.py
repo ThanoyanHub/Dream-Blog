@@ -88,3 +88,31 @@ class CategoryResponse(CategoryBase):
     
     class Config:
         from_attributes = True
+
+
+class CommentBase(BaseModel):
+    """Base comment schema"""
+    content: str = Field(..., min_length=1, max_length=1000)
+
+
+class CommentCreate(CommentBase):
+    """Comment creation schema"""
+    pass
+
+
+class CommentUpdate(BaseModel):
+    """Comment update schema"""
+    content: str = Field(..., min_length=1, max_length=1000)
+
+
+class CommentResponse(CommentBase):
+    """Comment response schema"""
+    id: int
+    author_id: int
+    post_id: int
+    author: UserResponse
+    created_at: datetime
+    updated_at: datetime
+    
+    class Config:
+        from_attributes = True
