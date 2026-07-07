@@ -8,21 +8,17 @@ from typing import Optional
 class Settings(BaseSettings):
     """Application settings"""
     
-    # Application
     APP_NAME: str = "Dream Blog"
     APP_VERSION: str = "1.0.0"
     DEBUG: bool = True
     
-    # Database
     DATABASE_URL: str = "sqlite:///./dream_blog.db"
     
-    # JWT
     SECRET_KEY: str = "your-secret-key-change-in-production-min-32-chars-long!!"
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     REFRESH_TOKEN_EXPIRE_DAYS: int = 7
     
-    # CORS
     ALLOWED_ORIGINS: list = [
         "http://localhost:3000",
         "http://localhost:5173",
